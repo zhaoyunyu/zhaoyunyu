@@ -1,0 +1,21 @@
+# https://decapcms.org/docs/configuration-options/
+backend:
+  name: github
+  repo: https://github.com/zhybc/zhybc.git
+  branch: master
+  # auth_type: implicit
+  # app_id: GeCbq2xd5d2s3mQvcN
+media_folder: "source/images/"
+public_folder: "source/_posts/Node/2023"
+site_url: "https://luckfy.cn"
+logo_url: "https://www.imaegoo.com/images/logo.png"
+locale: "zh_Hans"
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "关于"
+        file: "source/about/index.md"
+        preview_path: "about/"
+        <<: *common_col_conf
