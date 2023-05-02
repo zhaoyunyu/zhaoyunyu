@@ -271,9 +271,9 @@
           
           <category> 笔记 </category>
           
-          <category> .net </category>
-          
           <category> IdentityServer </category>
+          
+          <category> .net </category>
           
       </categories>
       
@@ -282,9 +282,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> .net </tag>
-            
             <tag> IdentityServer </tag>
+            
+            <tag> .net </tag>
             
         </tags>
       
@@ -341,9 +341,9 @@
           
           <category> 笔记 </category>
           
-          <category> .net </category>
-          
           <category> IdentityServer </category>
+          
+          <category> .net </category>
           
           <category> ids4 </category>
           
@@ -354,9 +354,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> .net </tag>
-            
             <tag> IdentityServer </tag>
+            
+            <tag> .net </tag>
             
             <tag> ids4 </tag>
             
@@ -378,13 +378,13 @@
           
           <category> 笔记 </category>
           
-          <category> .net </category>
-          
           <category> IdentityServer </category>
           
-          <category> Swagger </category>
+          <category> .net </category>
           
           <category> ids4 </category>
+          
+          <category> Swagger </category>
           
           <category> oauth2 </category>
           
@@ -395,9 +395,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> .net </tag>
-            
             <tag> IdentityServer </tag>
+            
+            <tag> .net </tag>
             
             <tag> ids4 </tag>
             
