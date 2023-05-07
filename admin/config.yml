@@ -1,12 +1,8 @@
 # https://decapcms.org/docs/configuration-options/
 backend:
   name: github
-  repo: https://github.com/zhybc/zhybc.github.io.git
+  repo: zhybc/myBlogCore
   branch: master
-  # auth_type: implicit
-  # app_id: GeCbq2xd5d2s3mQvcN
-  client_id: d9638dad9219ebd5b9f5
-  client_secret: 22553e47b89871714ae10324bca95c1650afd432
 media_folder: "source/images/"
 public_folder: "source/"
 site_url: "https://luckfy.cn"
@@ -45,6 +41,26 @@ common_col_conf: &common_col_conf
       name: "cover"
       widget: "image"
       required: false
+    - label: "标签"
+      name: "tags"
+      widget: "select"
+      multiple: true
+      required: false
+      options:
+        - "security"
+        - "serverless"
+        - "shadowdefender"
+        - "tool"
+        - "twikoo"
+        - "ubuntu"
+        - "vagrant"
+        - "vb"
+        - "vite"
+        - "vue"
+        - "webpack"
+        - "windows"
+        - "xlsx"
+        - "小程序"
     - label: "分类"
       name: "categories"
       widget: "select"
@@ -63,22 +79,25 @@ common_col_conf: &common_col_conf
     - label: "正文"
       name: "body"
       widget: "markdown"
+    - label: "原创"
+      name: "toc"
+      widget: "boolean"
+      default: true
+    - label: "评论"
+      name: "comments"
+      widget: "boolean"
+      default: true
 collections:
-    - name: "tags"
-      label: "标签" 
-      file: "source/tags/index.md"
-      preview_path: "tags/"
-      folder: "tags/" 
-      <<: *common_col_conf  
-    - name: "categories"
-      label: "分类"
-      file: "source/categories/index.md" 
-      preview_path: "categories/"
-      folder: "categories/"
-      <<: *common_col_conf   
-    - name: "about" 
-      label: "关于"
-      file: "source/about/index.md"
-      preview_path: "about/"
-      folder: "about/"
-      <<: *common_col_conf
+  - name: "blogs"
+    label: "文章"
+    folder: "source/_posts/blogs"
+    preview_path: "blogs/{{filename}}/"
+    <<: *common_col_conf
+  - name: "pages"
+    label: "Pages"
+    files:
+      - name: "about"
+        label: "关于"
+        file: "source/about/index.md"
+        preview_path: "about/"
+        <<: *common_col_conf
