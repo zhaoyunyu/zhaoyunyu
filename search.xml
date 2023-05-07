@@ -39,35 +39,6 @@
     
     
     <entry>
-      <title>C# smtp邮件发送测试</title>
-      <link href="/2023/05/02/Node/smtp%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E6%B5%8B%E8%AF%95/"/>
-      <url>/2023/05/02/Node/smtp%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E6%B5%8B%E8%AF%95/</url>
-      
-        <content type="html"><![CDATA[ <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> 通过客户端发送邮件信息（如果发件人使用QQ邮箱，那么对应的smtpService需改成smtp.qq.com）</span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> 前提：发件人需要到邮箱中启用第三方客户端服务，位置：设置<span class="doctag">--&gt;</span>账户<span class="doctag">--&gt;</span>POP3/SMTP服务 <span class="doctag">--&gt;</span>开启，获取邮箱授权码</span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;senderEmail&quot;&gt;</span>发件人邮箱<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;authCode&quot;&gt;</span>发件人邮箱授权码<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;receiverEmail&quot;&gt;</span>收件人邮箱<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;emailTitle&quot;&gt;</span>邮件标题<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;emailContent&quot;&gt;</span>邮件内容<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;smtpService&quot;&gt;</span>邮件服务名：smtp.qq.com <span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SendEmailBySMTP</span>(<span class="params"><span class="built_in">string</span> senderEmail, <span class="built_in">string</span> authCode, <span class="built_in">string</span> receiverEmail, <span class="built_in">string</span> emailTitle, <span class="built_in">string</span> emailContent, <span class="built_in">string</span> smtpService</span>)</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="comment">//实例化一个发送邮件类</span></span><br><span class="line">         MailMessage mailMsg = <span class="keyword">new</span> MailMessage();</span><br><span class="line">         <span class="comment">//发件人邮箱地址</span></span><br><span class="line">         mailMsg.From = <span class="keyword">new</span> MailAddress(senderEmail);</span><br><span class="line">         <span class="comment">//收件人邮箱地址</span></span><br><span class="line">         mailMsg.To.Add(<span class="keyword">new</span> MailAddress(receiverEmail));</span><br><span class="line">         <span class="comment">//邮件标题的编码格式</span></span><br><span class="line">         mailMsg.SubjectEncoding = Encoding.UTF8;</span><br><span class="line">         <span class="comment">//邮件标题</span></span><br><span class="line">         mailMsg.Subject = emailTitle;</span><br><span class="line">         <span class="comment">//邮件内容的编码格式</span></span><br><span class="line">         mailMsg.BodyEncoding = Encoding.UTF8;</span><br><span class="line">         <span class="comment">//邮件内容</span></span><br><span class="line">         mailMsg.Body = emailContent;</span><br><span class="line">         <span class="comment">//是否是html邮件</span></span><br><span class="line">         mailMsg.IsBodyHtml = <span class="literal">true</span>;</span><br><span class="line">         <span class="comment">//邮件优先级</span></span><br><span class="line">         mailMsg.Priority = MailPriority.High;</span><br><span class="line">         <span class="comment">//实例化一个SmtpClient类</span></span><br><span class="line">         SmtpClient client = <span class="keyword">new</span> SmtpClient();</span><br><span class="line">         <span class="comment">//设置邮件服务名，这里使用的是QQ邮箱，所以是smtp.qq.com, 若使用163邮箱，则是 smtp.163.com</span></span><br><span class="line">         client.Host = smtpService;</span><br><span class="line">         <span class="comment">//设置邮件端口</span></span><br><span class="line">         client.Port = <span class="number">25</span>;</span><br><span class="line">         <span class="comment">//使用安全加密连接</span></span><br><span class="line">         client.EnableSsl = <span class="literal">true</span>;</span><br><span class="line">         <span class="comment">//不和请求一块发送</span></span><br><span class="line">         client.UseDefaultCredentials = <span class="literal">false</span>;</span><br><span class="line">         <span class="comment">//验证发件人身份（发件人邮箱，邮箱生成的授权码）</span></span><br><span class="line">         client.Credentials = <span class="keyword">new</span> NetworkCredential(senderEmail, authCode);</span><br><span class="line">         <span class="comment">//发送</span></span><br><span class="line">         client.Send(mailMsg);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>]]></content>
-      
-      
-      <categories>
-          
-          <category> 笔记 </category>
-          
-          <category> smtp </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 笔记 </tag>
-            
-            <tag> smtp </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>ubuntu修改ip地址</title>
       <link href="/2023/05/02/Node/ubuntu%E4%BF%AE%E6%94%B9ip%E5%9C%B0%E5%9D%80/"/>
       <url>/2023/05/02/Node/ubuntu%E4%BF%AE%E6%94%B9ip%E5%9C%B0%E5%9D%80/</url>
@@ -89,6 +60,35 @@
             <tag> 笔记 </tag>
             
             <tag> ubuntu </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C# smtp邮件发送测试</title>
+      <link href="/2023/05/02/Node/smtp%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E6%B5%8B%E8%AF%95/"/>
+      <url>/2023/05/02/Node/smtp%E9%82%AE%E4%BB%B6%E5%8F%91%E9%80%81%E6%B5%8B%E8%AF%95/</url>
+      
+        <content type="html"><![CDATA[ <figure class="highlight c#"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> 通过客户端发送邮件信息（如果发件人使用QQ邮箱，那么对应的smtpService需改成smtp.qq.com）</span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> 前提：发件人需要到邮箱中启用第三方客户端服务，位置：设置<span class="doctag">--&gt;</span>账户<span class="doctag">--&gt;</span>POP3/SMTP服务 <span class="doctag">--&gt;</span>开启，获取邮箱授权码</span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;senderEmail&quot;&gt;</span>发件人邮箱<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;authCode&quot;&gt;</span>发件人邮箱授权码<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;receiverEmail&quot;&gt;</span>收件人邮箱<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;emailTitle&quot;&gt;</span>邮件标题<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;emailContent&quot;&gt;</span>邮件内容<span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;param name=&quot;smtpService&quot;&gt;</span>邮件服务名：smtp.qq.com <span class="doctag">&lt;/param&gt;</span></span></span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SendEmailBySMTP</span>(<span class="params"><span class="built_in">string</span> senderEmail, <span class="built_in">string</span> authCode, <span class="built_in">string</span> receiverEmail, <span class="built_in">string</span> emailTitle, <span class="built_in">string</span> emailContent, <span class="built_in">string</span> smtpService</span>)</span></span><br><span class="line">     &#123;</span><br><span class="line">         <span class="comment">//实例化一个发送邮件类</span></span><br><span class="line">         MailMessage mailMsg = <span class="keyword">new</span> MailMessage();</span><br><span class="line">         <span class="comment">//发件人邮箱地址</span></span><br><span class="line">         mailMsg.From = <span class="keyword">new</span> MailAddress(senderEmail);</span><br><span class="line">         <span class="comment">//收件人邮箱地址</span></span><br><span class="line">         mailMsg.To.Add(<span class="keyword">new</span> MailAddress(receiverEmail));</span><br><span class="line">         <span class="comment">//邮件标题的编码格式</span></span><br><span class="line">         mailMsg.SubjectEncoding = Encoding.UTF8;</span><br><span class="line">         <span class="comment">//邮件标题</span></span><br><span class="line">         mailMsg.Subject = emailTitle;</span><br><span class="line">         <span class="comment">//邮件内容的编码格式</span></span><br><span class="line">         mailMsg.BodyEncoding = Encoding.UTF8;</span><br><span class="line">         <span class="comment">//邮件内容</span></span><br><span class="line">         mailMsg.Body = emailContent;</span><br><span class="line">         <span class="comment">//是否是html邮件</span></span><br><span class="line">         mailMsg.IsBodyHtml = <span class="literal">true</span>;</span><br><span class="line">         <span class="comment">//邮件优先级</span></span><br><span class="line">         mailMsg.Priority = MailPriority.High;</span><br><span class="line">         <span class="comment">//实例化一个SmtpClient类</span></span><br><span class="line">         SmtpClient client = <span class="keyword">new</span> SmtpClient();</span><br><span class="line">         <span class="comment">//设置邮件服务名，这里使用的是QQ邮箱，所以是smtp.qq.com, 若使用163邮箱，则是 smtp.163.com</span></span><br><span class="line">         client.Host = smtpService;</span><br><span class="line">         <span class="comment">//设置邮件端口</span></span><br><span class="line">         client.Port = <span class="number">25</span>;</span><br><span class="line">         <span class="comment">//使用安全加密连接</span></span><br><span class="line">         client.EnableSsl = <span class="literal">true</span>;</span><br><span class="line">         <span class="comment">//不和请求一块发送</span></span><br><span class="line">         client.UseDefaultCredentials = <span class="literal">false</span>;</span><br><span class="line">         <span class="comment">//验证发件人身份（发件人邮箱，邮箱生成的授权码）</span></span><br><span class="line">         client.Credentials = <span class="keyword">new</span> NetworkCredential(senderEmail, authCode);</span><br><span class="line">         <span class="comment">//发送</span></span><br><span class="line">         client.Send(mailMsg);</span><br><span class="line">     &#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+          <category> smtp </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> smtp </tag>
             
         </tags>
       
@@ -148,9 +148,9 @@
       
         <tags>
             
-            <tag> docker </tag>
-            
             <tag> 笔记 </tag>
+            
+            <tag> docker </tag>
             
             <tag> rootless </tag>
             
@@ -308,9 +308,9 @@
           
           <category> 笔记 </category>
           
-          <category> .net </category>
-          
           <category> IdentityServer </category>
+          
+          <category> .net </category>
           
       </categories>
       
@@ -319,9 +319,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> .net </tag>
-            
             <tag> IdentityServer </tag>
+            
+            <tag> .net </tag>
             
         </tags>
       
@@ -341,9 +341,9 @@
           
           <category> 笔记 </category>
           
-          <category> .net </category>
-          
           <category> IdentityServer </category>
+          
+          <category> .net </category>
           
           <category> ids4 </category>
           
@@ -354,9 +354,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> .net </tag>
-            
             <tag> IdentityServer </tag>
+            
+            <tag> .net </tag>
             
             <tag> ids4 </tag>
             
@@ -378,9 +378,9 @@
           
           <category> 笔记 </category>
           
-          <category> .net </category>
-          
           <category> IdentityServer </category>
+          
+          <category> .net </category>
           
           <category> ids4 </category>
           
@@ -395,9 +395,9 @@
             
             <tag> 笔记 </tag>
             
-            <tag> .net </tag>
-            
             <tag> IdentityServer </tag>
+            
+            <tag> .net </tag>
             
             <tag> ids4 </tag>
             
