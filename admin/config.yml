@@ -1,7 +1,7 @@
 # https://decapcms.org/docs/configuration-options/
 backend:
   name: github
-  repo: https://github.com/zhybc/zhybc.git
+  repo: https://github.com/zhybc/myBlogCore.git
   branch: master
   # auth_type: implicit
   # app_id: GeCbq2xd5d2s3mQvcN
