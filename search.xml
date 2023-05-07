@@ -271,9 +271,9 @@
           
           <category> 笔记 </category>
           
-          <category> IdentityServer </category>
-          
           <category> .net </category>
+          
+          <category> IdentityServer </category>
           
       </categories>
       
@@ -341,9 +341,9 @@
           
           <category> 笔记 </category>
           
-          <category> IdentityServer </category>
-          
           <category> .net </category>
+          
+          <category> IdentityServer </category>
           
           <category> ids4 </category>
           
@@ -378,13 +378,13 @@
           
           <category> 笔记 </category>
           
-          <category> IdentityServer </category>
-          
           <category> .net </category>
           
-          <category> ids4 </category>
+          <category> IdentityServer </category>
           
           <category> Swagger </category>
+          
+          <category> ids4 </category>
           
           <category> oauth2 </category>
           
@@ -506,11 +506,11 @@
             
             <tag> 笔记 </tag>
             
+            <tag> 配置 </tag>
+            
             <tag> 网络 </tag>
             
             <tag> 雷电模拟器 </tag>
-            
-            <tag> 配置 </tag>
             
         </tags>
       
